@@ -71,6 +71,7 @@
     <Build Include="Functions\GetFullAge.sql" />
     <None Include="Functions\TestScript.sql" />
     <Build Include="Tables\TaskStates.sql" />
+    <Build Include="Tables\TaskTracks.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SeedData\UserProfilesSeedData.sql" />
