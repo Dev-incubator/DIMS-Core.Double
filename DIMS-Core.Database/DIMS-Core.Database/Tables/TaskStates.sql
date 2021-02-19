@@ -1,0 +1,5 @@
+﻿CREATE TABLE [dbo].[TaskStates]
+(
+	[TaskStateId] INT NOT NULL PRIMARY KEY IDENTITY,
+	[StateName] NVARCHAR(250) NOT NULL UNIQUE
+)

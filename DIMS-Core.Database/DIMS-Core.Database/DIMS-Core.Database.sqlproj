@@ -70,6 +70,7 @@
     <Build Include="Views\vUserProfiles.sql" />
     <Build Include="Functions\GetFullAge.sql" />
     <None Include="Functions\TestScript.sql" />
+    <Build Include="Tables\TaskStates.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SeedData\UserProfilesSeedData.sql" />
