@@ -73,6 +73,8 @@
     <Build Include="Views\vTasks.sql" />
     <Build Include="Views\vUserTasks.sql" />
     <Build Include="Functions\GetFullAge.sql" />
+    <Build Include="Procedures\DeleteTask.sql" />
+    <Build Include="Procedures\DeleteUser.sql" />
     <None Include="Functions\TestScript.sql" />
     <Build Include="Tables\TaskStates.sql" />
     <Build Include="Tables\TaskTracks.sql" />
