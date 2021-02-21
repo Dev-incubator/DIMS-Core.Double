@@ -78,6 +78,9 @@
     <Build Include="Tables\TaskTracks.sql" />
     <Build Include="Views\vUserProgress.sql" />
     <Build Include="Views\vUserTracks.sql" />
+    <Build Include="Procedures\SetUserTaskAsSuccess.sql" />
+    <Build Include="Procedures\SetUserTaskAsFail.sql" />
+    <None Include="SeedData\TaskTracksSeedData.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SeedData\UserProfilesSeedData.sql" />
