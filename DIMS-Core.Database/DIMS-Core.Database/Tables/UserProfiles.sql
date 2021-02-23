@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[UserProfiles]
 (
-	[UserId] INT NOT NULL PRIMARY KEY IDENTITY,
+	[UserId] INT NOT NULL IDENTITY,
 	[FirstName] NVARCHAR(50) NOT NULL,
 	[LastName] NVARCHAR(50) NOT NULL,
 	[DirectionId] INT NOT NULL,
@@ -15,5 +15,6 @@
 	[Email] NVARCHAR(50) NOT NULL,
 	[MobilePhone] NVARCHAR(50) NOT NULL,
 
+    CONSTRAINT PK_UserId PRIMARY KEY (UserId),
 	CONSTRAINT FK_UserProfile_Direction FOREIGN KEY (DirectionId) REFERENCES Directions(DirectionId) ON DELETE CASCADE ON UPDATE CASCADE
 )
