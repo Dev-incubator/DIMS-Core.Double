@@ -5,5 +5,5 @@
     [TrackDate] DATETIME NOT NULL, 
     [TrackNote] NVARCHAR(250) NULL,
 
-    FOREIGN KEY (UserTaskId) REFERENCES UserTasks(UserTaskId)
+    CONSTRAINT FK_TaskTrack_UserTask FOREIGN KEY (UserTaskId) REFERENCES UserTasks(UserTaskId) ON DELETE CASCADE ON UPDATE CASCADE 
 )

@@ -5,7 +5,7 @@ create table [dbo].[UserTasks]
 	[UserId] INT NOT NULL,
 	[StateId] INT NOT NULL
 
-	FOREIGN KEY (TaskId) REFERENCES Tasks(TaskId) on update cascade on delete cascade,
-	FOREIGN KEY (UserId) REFERENCES UserProfiles(UserId) on update cascade on delete cascade,
-	FOREIGN KEY (StateId) REFERENCES TaskStates(StateId) on update cascade on delete cascade,
+	CONSTRAINT FK_UserTask_Task FOREIGN KEY (TaskId) REFERENCES Tasks(TaskId) ON DELETE CASCADE ON UPDATE CASCADE,
+	CONSTRAINT FK_UserTask_UserProfile FOREIGN KEY (UserId) REFERENCES UserProfiles(UserId) ON DELETE CASCADE ON UPDATE CASCADE,
+	CONSTRAINT FK_UserTask_TaskState FOREIGN KEY (StateId) REFERENCES TaskStates(StateId) ON DELETE CASCADE ON UPDATE CASCADE,
 )

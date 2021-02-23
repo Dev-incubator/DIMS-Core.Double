@@ -15,5 +15,5 @@
 	[Email] NVARCHAR(50) NOT NULL,
 	[MobilePhone] NVARCHAR(50) NOT NULL,
 
-	FOREIGN KEY (DirectionId) REFERENCES Directions(DirectionId)
+	CONSTRAINT FK_UserProfile_Direction FOREIGN KEY (DirectionId) REFERENCES Directions(DirectionId) ON DELETE CASCADE ON UPDATE CASCADE
 )
