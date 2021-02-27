@@ -15,3 +15,4 @@ namespace DIMS_Core.DataAccessLayer.Interfaces
         Task SetState(int userId, int taskId, TaskStateEnum stateEnum);
     }
 }
+
