@@ -14,13 +14,26 @@ namespace DIMS_Core.DataAccessLayer.Repositories
 
         private IRepository<Direction> _directionRepository;
 
+        private IRepository<UserTask> _userTaskRepository;
+
+        private IRepository<Models.Task> _taskRepository;
+
         private IReadOnlyRepository<VUserProfile> _vUserProfileRepository;
 
+        private IReadOnlyRepository<VUserTask> _vUserTaskRepository;
+
+        private IReadOnlyRepository<VTask> _vTaskRepository;
         public IRepository<UserProfile> UserProfileRepository => _userProfileRepository ??= new UserProfileRepository(_context);
 
         public IRepository<Direction> DirectionRepository => _directionRepository ??= new DirectionRepository(_context);
 
+        public IRepository<UserTask> UserTaskRepository => _userTaskRepository ??= new UserTaskRepository(_context);
+
+        public IRepository<Models.Task> TaskRepository => _taskRepository ??= new TaskRepository(_context);
+
         public IReadOnlyRepository<VUserProfile> VUserProfileRepository => _vUserProfileRepository ??= new VUserProfileRepository(_context);
+        public IReadOnlyRepository<VUserTask> VUserTaskRepository => _vUserTaskRepository ??= new VUserTaskRepository(_context);
+        public IReadOnlyRepository<VTask> VTaskRepository => _vTaskRepository ??= new VTaskRepository(_context);
 
         public UnitOfWork(DIMSCoreContext context)
         {
