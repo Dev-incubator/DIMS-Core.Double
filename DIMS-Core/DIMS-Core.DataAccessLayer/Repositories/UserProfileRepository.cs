@@ -6,7 +6,7 @@ using ThreadTask = System.Threading.Tasks.Task;
 
 namespace DIMS_Core.DataAccessLayer.Repositories
 {
-    public class UserProfileRepository : Repository<UserProfile>, IUserProfileRepository
+    public class UserProfileRepository : Repository<UserProfile>
     {
         private readonly DIMSCoreContext _context;
         public UserProfileRepository(DIMSCoreContext context) : base(context)
@@ -14,9 +14,10 @@ namespace DIMS_Core.DataAccessLayer.Repositories
             _context = context;
         }
 
-        public async ThreadTask DeleteUserProcedure(int id)
+        public override async ThreadTask Delete(int id)
         {
             await _context.Database.ExecuteSqlRawAsync("Exec DeleteUser @UserId", id);
         }
+        
     }
 }

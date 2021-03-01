@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 
-#nullable disable
-
 namespace DIMS_Core.DataAccessLayer.Models
 {
     public partial class VTask
