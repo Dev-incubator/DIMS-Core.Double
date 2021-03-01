@@ -32,10 +32,7 @@ namespace DIMS_Core.DataAccessLayer.Repositories
 
         public async Task<TEntity> GetById(int id)
         {
-            if (id <= 0)
-            {
-                ExceptionHelper.ThrowIfIntLessOrEqualZero(id);
-            }
+            ExceptionHelper.ThrowIfIntLessOrEqualZero(id);
 
             var objectFromDb = await _set.FindAsync(id);
             if (objectFromDb is null)
