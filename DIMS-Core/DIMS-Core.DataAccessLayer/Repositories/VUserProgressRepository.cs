@@ -11,7 +11,7 @@ namespace DIMS_Core.DataAccessLayer.Repositories
 {
     public class VUserProgressRepository : ReadOnlyRepository<VUserProgress>
     {
-        protected VUserProgressRepository(DIMSCoreContext context) : base(context)
+        public VUserProgressRepository(DIMSCoreContext context) : base(context)
         {
         }
     }

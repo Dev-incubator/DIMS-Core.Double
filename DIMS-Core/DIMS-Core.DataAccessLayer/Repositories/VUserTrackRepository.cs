@@ -11,7 +11,7 @@ namespace DIMS_Core.DataAccessLayer.Repositories
 {
     public class VUserTrackRepository : ReadOnlyRepository<VUserTrack>
     {
-        protected VUserTrackRepository(DIMSCoreContext context) : base(context)
+        public VUserTrackRepository(DIMSCoreContext context) : base(context)
         {
         }
     }
