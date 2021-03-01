@@ -8,14 +8,14 @@ namespace DIMS_Core.Common.Exceptions
 {
     public static class ExceptionHelper
     {
-        public static InvalidIdException CreateIdException(string paramName, int value)
+        public static void ThrowIdException(string paramName, int value)
         {
-            return new InvalidIdException($"Invalid entity id = {value}", paramName, value);
+            throw new InvalidIdException($"Invalid entity id = {value}", paramName, value);
         }
 
-        public static EntityNotExistException CreateNotExistException(string methodName)
+        public static void ThrowNotExistException(string methodName)
         {
-            return new EntityNotExistException(methodName, $"Can't find entity in database");
+            throw new EntityNotExistException(methodName, $"Can't find entity in database");
         }
 
     }

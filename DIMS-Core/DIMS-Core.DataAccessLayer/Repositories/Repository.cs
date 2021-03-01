@@ -34,13 +34,13 @@ namespace DIMS_Core.DataAccessLayer.Repositories
         {
             if (id <= 0)
             {
-                throw ExceptionHelper.CreateIdException(nameof(id), id);
+                ExceptionHelper.ThrowIdException(nameof(id), id);
             }
 
-            TEntity objectFromDb = await _set.FindAsync(id);
+            var objectFromDb = await _set.FindAsync(id);
             if (objectFromDb is null)
             {
-                throw ExceptionHelper.CreateNotExistException(nameof(GetById));
+                ExceptionHelper.ThrowNotExistException(nameof(GetById));
             }
 
             return objectFromDb;
