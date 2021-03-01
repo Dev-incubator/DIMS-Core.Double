@@ -9,18 +9,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DIMS_Core.DataAccessLayer.Repositories
 {
-    public class VUserProgressRepository : IReadOnlyRepository<VUserProgress>
+    public class VUserProgressRepository : ReadOnlyRepository<VUserProgress>
     {
-        private readonly DIMSCoreContext _context;
-
-        public VUserProgressRepository(DIMSCoreContext context)
+        protected VUserProgressRepository(DIMSCoreContext context) : base(context)
         {
-            _context = context;
-        }
-
-        public IQueryable<VUserProgress> GetAll()
-        {
-            return _context.VUserProgresses.AsNoTracking();
         }
     }
 }

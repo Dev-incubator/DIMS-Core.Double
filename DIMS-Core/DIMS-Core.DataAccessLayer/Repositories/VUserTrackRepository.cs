@@ -9,18 +9,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DIMS_Core.DataAccessLayer.Repositories
 {
-    public class VUserTrackRepository : IReadOnlyRepository<VUserTrack>
+    public class VUserTrackRepository : ReadOnlyRepository<VUserTrack>
     {
-        private readonly DIMSCoreContext _context;
-
-        public VUserTrackRepository(DIMSCoreContext context)
+        protected VUserTrackRepository(DIMSCoreContext context) : base(context)
         {
-            _context = context;
-        }
-
-        public IQueryable<VUserTrack> GetAll()
-        {
-            return _context.VUserTracks.AsNoTracking();
         }
     }
 }
