@@ -34,7 +34,7 @@ namespace DIMS_Core.DataAccessLayer.Repositories
         {
             if (id <= 0)
             {
-                ExceptionHelper.ThrowIdException(nameof(id), id);
+                ExceptionHelper.ThrowIfIntLessOrEqualZero(id);
             }
 
             var objectFromDb = await _set.FindAsync(id);
