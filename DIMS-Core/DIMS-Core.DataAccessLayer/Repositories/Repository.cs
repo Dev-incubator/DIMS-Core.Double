@@ -32,13 +32,11 @@ namespace DIMS_Core.DataAccessLayer.Repositories
 
         public async Task<TEntity> GetById(int id)
         {
-            ExceptionHelper.ThrowIfIntLessOrEqualZero(id);
+            ExceptionHelper.ThrowIfInvalidId(id);
 
             var objectFromDb = await _set.FindAsync(id);
-            if (objectFromDb is null)
-            {
-                ExceptionHelper.ThrowNotExistException(nameof(GetById));
-            }
+
+            ExceptionHelper.ThrowIfEntityIsNull(objectFromDb, nameof(GetById));
 
             return objectFromDb;
         }

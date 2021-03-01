@@ -8,7 +8,7 @@ namespace DIMS_Core.Common.Exceptions
 {
     public static class ExceptionHelper
     {
-        public static void ThrowIfIntLessOrEqualZero(int id, string paramName = "id")
+        public static void ThrowIfInvalidId(int id, string paramName = "id")
         {
             if (id <= 0)
             {
@@ -16,9 +16,12 @@ namespace DIMS_Core.Common.Exceptions
             }
         }
 
-        public static void ThrowNotExistException(string methodName)
+        public static void ThrowIfEntityIsNull(object entity,string methodName)
         {
-            throw new EntityNotExistException(methodName, $"Can't find entity in database");
+            if (entity is null)
+            {
+                throw new EntityNotExistException(methodName, $"Can't find entity in database");
+            }
         }
     }
 }
