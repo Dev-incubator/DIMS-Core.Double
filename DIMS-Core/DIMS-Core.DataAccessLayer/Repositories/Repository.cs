@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 
 namespace DIMS_Core.DataAccessLayer.Repositories
 {
@@ -72,6 +73,11 @@ namespace DIMS_Core.DataAccessLayer.Repositories
         {
             var entity = await _set.FindAsync(id);
             _set.Remove(entity);
+        }
+
+        protected DatabaseFacade GetDb()
+        {
+            return _context.Database;
         }
 
         #region Disposable
