@@ -75,7 +75,7 @@ namespace DIMS_Core.DataAccessLayer.Repositories
             _set.Remove(entity);
         }
 
-        protected DatabaseFacade GetDb()
+        protected DatabaseFacade GetDatabaseFacade()
         {
             return _context.Database;
         }

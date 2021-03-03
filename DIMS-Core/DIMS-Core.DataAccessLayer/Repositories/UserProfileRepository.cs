@@ -18,7 +18,7 @@ namespace DIMS_Core.DataAccessLayer.Repositories
 
         public override async  ThreadTask Delete(int userId)
         {
-            await GetDb().ExecuteSqlRawAsync("Exec DeleteUser @UserId", userId);
+            await GetDatabaseFacade().ExecuteSqlRawAsync("Exec DeleteUser @UserId", userId);
         }
         
     }
