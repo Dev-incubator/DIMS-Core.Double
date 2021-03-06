@@ -14,6 +14,10 @@ using Task = System.Threading.Tasks.Task;
 
 namespace DIMS_Core.Tests.DataAccessLayer.Infrastructure
 {
+    /// <summary>
+    /// class to assist in testing repositories
+    /// </summary>
+    /// <typeparam name="TEntity"></typeparam>
     public class RepositoryTestHelper<TEntity> : IDisposable where TEntity : class
     {
         private readonly DIMSCoreContext _context;
@@ -21,7 +25,12 @@ namespace DIMS_Core.Tests.DataAccessLayer.Infrastructure
         private readonly IEqualityComparer<TEntity> _comparer;
         private DbSet<TEntity> DbSet => _context.Set<TEntity>();
 
-        //Todo: change IEquality to predicate
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="repository"></param>
+        /// <param name="deconstruct">lambda expressions which deconstruct entity to ValueTuple</param>
         public RepositoryTestHelper(DIMSCoreContext context, IRepository<TEntity> repository, Func<TEntity, ITuple> deconstruct)
         {
             _context = context;
