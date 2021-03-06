@@ -40,31 +40,40 @@ namespace DIMS_Core.Tests.DataAccessLayer.Infrastructure
 
         public async Task GetAllEqualsSeedData(ICollection<TEntity> seedData)
         {
+            //Arrange
             await DbSet.AddRangeAsync(seedData);
             await _context.SaveChangesAsync();
 
+            //Act
             var repositoryData = _repository.GetAll();
 
+            //Assert
             Assert.Equal(seedData, repositoryData, _comparer);
         }
 
         public async Task GetByIdEqualsSeedEntity(TEntity entity)
         {
+            //Arrange
             await DbSet.AddAsync(entity);
             await _context.SaveChangesAsync();
 
+            //Act
             var repositoryEntity = await _repository.GetById(1);
 
+            //Assert
             Assert.Equal(entity, repositoryEntity, _comparer);
         }
 
         public async Task CreatedEntityEqualsSeedEntity(TEntity entity)
         {
+            //Arrange
             await _repository.Create(entity);
             await _context.SaveChangesAsync();
 
+            //Act
             var repositoryEntity = await DbSet.FirstAsync();
 
+            //Assert
             Assert.Equal(entity, repositoryEntity, _comparer);
         }
 
@@ -84,12 +93,15 @@ namespace DIMS_Core.Tests.DataAccessLayer.Infrastructure
 
         public async Task HasEntityDeleted(TEntity entity)
         {
+            //Arrange
             await DbSet.AddAsync(entity);
             await _context.SaveChangesAsync();
 
+            //Act
             await _repository.Delete(1);
             await _context.SaveChangesAsync();
 
+            //Assert
             Assert.DoesNotContain(entity, DbSet);
         }
 
