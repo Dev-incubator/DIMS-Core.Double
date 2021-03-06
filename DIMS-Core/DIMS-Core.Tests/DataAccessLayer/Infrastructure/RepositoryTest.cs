@@ -77,6 +77,7 @@ namespace DIMS_Core.Tests.DataAccessLayer.Infrastructure
             await _context.SaveChangesAsync();
 
             await _repository.Delete(1);
+            await _context.SaveChangesAsync();
 
             Assert.DoesNotContain(entity, DbSet);
         }
