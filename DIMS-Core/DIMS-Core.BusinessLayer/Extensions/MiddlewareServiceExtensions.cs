@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Reflection;
 using AutoMapper;
 using DIMS_Core.BusinessLayer.Interfaces;
@@ -19,6 +19,7 @@ namespace DIMS_Core.BusinessLayer.Extensions
             services.AddScoped<IUserProfileService, UserProfileService>();
             services.AddScoped<IDirectionService, DirectionService>();
             services.AddScoped<IVUserProfileService, VUserProfileService>();
+            services.AddScoped<IVUserProgressService, VUserProgressService>();
 
             services.AddDatabaseDependencies()
                     .AddIdentityDependencies()

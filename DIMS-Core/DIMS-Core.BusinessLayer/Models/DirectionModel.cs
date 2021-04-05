@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 namespace DIMS_Core.BusinessLayer.Models
 {
     public class DirectionModel
@@ -9,11 +9,14 @@ namespace DIMS_Core.BusinessLayer.Models
 
         public string Description { get; set; }
 
-        // TODO: Task # 16
-        // You have to implement operator == by comparing Name
+        public static bool operator ==(DirectionModel left, DirectionModel right)
+        {
+            return left.Name == right.Name;
+        }
 
-
-        // TODO: Task # 17
-        // You have to implement operator != by comparing Name
+        public static bool operator !=(DirectionModel left, DirectionModel right)
+        {
+            return left.Name != right.Name;
+        }
     }
 }

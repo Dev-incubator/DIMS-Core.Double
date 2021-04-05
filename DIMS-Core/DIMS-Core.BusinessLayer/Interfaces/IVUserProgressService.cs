@@ -1,14 +1,13 @@
 using DIMS_Core.BusinessLayer.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace DIMS_Core.BusinessLayer.Interfaces
 {
-    public interface IReadOnlyService<TModel> : IDisposable 
-        where TModel : class
+    public interface IVUserProgressService : IReadOnlyService<VUserProgressModel>
     {
-        Task<IEnumerable<TModel>> GetAll();
     }
 }

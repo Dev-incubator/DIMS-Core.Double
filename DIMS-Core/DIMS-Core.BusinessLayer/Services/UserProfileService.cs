@@ -5,56 +5,14 @@ using DIMS_Core.BusinessLayer.Interfaces;
 using DIMS_Core.BusinessLayer.Models;
 using DIMS_Core.DataAccessLayer.Interfaces;
 using DIMS_Core.DataAccessLayer.Models;
-using Microsoft.EntityFrameworkCore;
-using Task = System.Threading.Tasks.Task;
 
 namespace DIMS_Core.BusinessLayer.Services
 {
-    public class UserProfileService : Service, IUserProfileService
+    public class UserProfileService : Service<UserProfileModel, UserProfile, IRepository<UserProfile>>, IUserProfileService
     {
-        public UserProfileService(IUnitOfWork unitOfWork, IMapper mapper) : base(unitOfWork, mapper)
+        public UserProfileService(IRepository<UserProfile> repository, IUnitOfWork unitOfWork, IMapper mapper)
+            : base(repository, unitOfWork, mapper)
         {
-        }
-
-        public async Task<IEnumerable<UserProfileModel>> GetAll()
-        {
-            var userProfiles = _unitOfWork.UserProfileRepository.GetAll();
-
-            return await _mapper.ProjectTo<UserProfileModel>(userProfiles)
-                                .ToListAsync();
-        }
-
-        public async Task<UserProfileModel> GetById(int id)
-        {
-            var userProfileEntity = await _unitOfWork.UserProfileRepository.GetById(id);
-
-            return _mapper.Map<UserProfileModel>(userProfileEntity);
-        }
-
-        public async Task<UserProfileModel> Update(UserProfileModel userProfile)
-        {
-            var userProfileEntity = await _unitOfWork.UserProfileRepository.GetById(userProfile.UserId);
-
-            var updatedEntity = _unitOfWork.UserProfileRepository.Update(_mapper.Map(userProfile, userProfileEntity));
-            await _unitOfWork.SaveChanges();
-
-            return _mapper.Map<UserProfileModel>(updatedEntity);
-        }
-
-        public async Task<UserProfileModel> Create(UserProfileModel userProfileModel)
-        {
-            var userProfileEntity = _mapper.Map<UserProfile>(userProfileModel);
-
-            var createdEntity = await _unitOfWork.UserProfileRepository.Create(userProfileEntity);
-            await _unitOfWork.SaveChanges();
-
-            return _mapper.Map<UserProfileModel>(createdEntity);
-        }
-
-        public async Task Delete(int id)
-        {
-            await _unitOfWork.UserProfileRepository.Delete(id);
-            await _unitOfWork.SaveChanges();
         }
 
         /// <summary>
