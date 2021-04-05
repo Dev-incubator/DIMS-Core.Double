@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace DIMS_Core.BusinessLayer.Services
 {
-    public class VUserProgressService : ReadOnlyService<VUserProgressModel, VUserProgress, IReadOnlyRepository<VUserProgress>>, IVUserProgressService
+    public class VUserProgressService : ReadOnlyService<VUserProgressModel, VUserProgress, IReadOnlyRepository<VUserProgress>>
     {
         public VUserProgressService(IReadOnlyRepository<VUserProgress> repository, IUnitOfWork unitOfWork, IMapper mapper)
             : base(repository, unitOfWork, mapper)

@@ -6,11 +6,12 @@ using DIMS_Core.DataAccessLayer.Models;
 
 namespace DIMS_Core.BusinessLayer.Services
 {
-    public class VUserProfileService : ReadOnlyService<VUserProfileModel, VUserProfile, IReadOnlyRepository<VUserProfile>>, IVUserProfileService
+    public class TaskTrackService : Service<TaskTrackModel, TaskTrack, IRepository<TaskTrack>>
     {
-        public VUserProfileService(IReadOnlyRepository<VUserProfile> repository, IUnitOfWork unitOfWork, IMapper mapper) 
+        public TaskTrackService(IRepository<TaskTrack> repository, IUnitOfWork unitOfWork, IMapper mapper)
             : base(repository, unitOfWork, mapper)
         {
         }
     }
 }
+
