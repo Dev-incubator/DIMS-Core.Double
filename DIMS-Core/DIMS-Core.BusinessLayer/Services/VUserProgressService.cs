@@ -13,8 +13,8 @@ namespace DIMS_Core.BusinessLayer.Services
 {
     public class VUserProgressService : ReadOnlyService<VUserProgressModel, VUserProgress, IReadOnlyRepository<VUserProgress>>
     {
-        public VUserProgressService(IReadOnlyRepository<VUserProgress> repository, IUnitOfWork unitOfWork, IMapper mapper)
-            : base(repository, unitOfWork, mapper)
+        public VUserProgressService(IReadOnlyRepository<VUserProgress> repository, IMapper mapper)
+            : base(repository, mapper)
         {
         }
     }

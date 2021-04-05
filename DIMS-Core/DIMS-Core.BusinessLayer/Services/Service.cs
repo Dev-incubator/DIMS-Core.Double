@@ -23,6 +23,7 @@ namespace DIMS_Core.BusinessLayer.Services
             _unitOfWork = unitOfWork;
             _mapper = mapper;
         }
+
         public async Task<TModel> Create(TModel model)
         {
             var entity = _mapper.Map<TEntity>(model);
@@ -67,7 +68,6 @@ namespace DIMS_Core.BusinessLayer.Services
         #region Disposable
 
         private bool _disposed;
-
         protected virtual void Dispose(bool disposing)
         {
             if (_disposed)
@@ -79,19 +79,15 @@ namespace DIMS_Core.BusinessLayer.Services
 
             _disposed = true;
         }
-
         ~Service()
         {
             Dispose(false);
         }
-
         public void Dispose()
         {
             Dispose(true);
             GC.SuppressFinalize(this);
         }
-
-        
 
         #endregion Disposable
     }

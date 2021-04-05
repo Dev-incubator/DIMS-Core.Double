@@ -8,7 +8,5 @@ namespace DIMS_Core.BusinessLayer.Interfaces
 {
     public interface IDirectionService : IService<DirectionModel>
     {
-        public bool Equal(DirectionModel directionModel1, DirectionModel directionModel2);
-        public bool NotEqual(DirectionModel directionModel1, DirectionModel directionModel2);
     }
 }

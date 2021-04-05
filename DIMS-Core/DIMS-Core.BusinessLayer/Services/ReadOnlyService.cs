@@ -1,6 +1,7 @@
 using AutoMapper;
 using DIMS_Core.BusinessLayer.Interfaces;
 using DIMS_Core.DataAccessLayer.Interfaces;
+using DIMS_Core.DataAccessLayer.Repositories;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -17,13 +18,11 @@ namespace DIMS_Core.BusinessLayer.Services
     {
         protected readonly IMapper _mapper;
         protected readonly TRepository _repository;
-        protected readonly IUnitOfWork _unitOfWork;
 
-        protected ReadOnlyService(TRepository repository, IUnitOfWork unitOfWork, IMapper mapper)
+        protected ReadOnlyService(TRepository repository, IMapper mapper)
         {
             _repository = repository;
             _mapper = mapper;
-            _unitOfWork = unitOfWork;
         }
 
         public async Task<IEnumerable<TModel>> GetAll()
@@ -57,9 +56,11 @@ namespace DIMS_Core.BusinessLayer.Services
                 return;
             }
 
-            _unitOfWork.Dispose();
-
-            _disposed = true;
+            if (_repository is Repository<TEntity> abstractRepository)
+            {
+                abstractRepository.Dispose();
+                _disposed = true;
+            }
         }
         #endregion
     }
