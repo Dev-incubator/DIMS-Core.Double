@@ -7,8 +7,8 @@ namespace DIMS_Core.BusinessLayer.Services
 {
     public class UserTaskService : Service<UserTaskModel, UserTask, IRepository<UserTask>>
     {
-        public UserTaskService(IRepository<UserTask> repository, IUnitOfWork unitOfWork, IMapper mapper)
-            : base(repository, unitOfWork, mapper)
+        public UserTaskService(IRepository<UserTask> repository, IMapper mapper)
+            : base(repository, mapper)
         {
         }
     }

@@ -10,8 +10,8 @@ namespace DIMS_Core.BusinessLayer.Services
 {
     public class TaskStateService : Service<TaskStateModel, TaskState, ITaskStateRepository>, ITaskStateService
     {
-        public TaskStateService(ITaskStateRepository repository, IUnitOfWork unitOfWork, IMapper mapper)
-            : base(repository, unitOfWork, mapper)
+        public TaskStateService(ITaskStateRepository repository, IMapper mapper)
+            : base(repository, mapper)
         {
         }
 

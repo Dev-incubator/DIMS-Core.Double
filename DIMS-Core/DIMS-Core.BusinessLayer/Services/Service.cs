@@ -15,12 +15,10 @@ namespace DIMS_Core.BusinessLayer.Services
     {
         protected readonly IMapper _mapper;
         protected readonly TRepository _repository;
-        protected readonly IUnitOfWork _unitOfWork;
 
-        protected Service(TRepository repository, IUnitOfWork unitOfWork, IMapper mapper)
+        protected Service(TRepository repository, IMapper mapper)
         {
             _repository = repository;
-            _unitOfWork = unitOfWork;
             _mapper = mapper;
         }
 
@@ -29,7 +27,7 @@ namespace DIMS_Core.BusinessLayer.Services
             var entity = _mapper.Map<TEntity>(model);
 
             var createdEntity = await _repository.Create(entity);
-            await _unitOfWork.SaveChanges();
+            await _repository.SaveChanges();
 
             return _mapper.Map<TModel>(createdEntity);
         }
@@ -54,7 +52,7 @@ namespace DIMS_Core.BusinessLayer.Services
             var mappedEntity = _mapper.Map<TEntity>(model);
             var updatedEntity = _repository.Update(mappedEntity);
 
-            await _unitOfWork.SaveChanges();
+            await _repository.SaveChanges();
 
             return _mapper.Map<TModel>(updatedEntity);
         }
@@ -62,7 +60,7 @@ namespace DIMS_Core.BusinessLayer.Services
         public async Task Delete(int id)
         {
             await _repository.Delete(id);
-            await _unitOfWork.SaveChanges();
+            await _repository.SaveChanges();
         }
 
         #region Disposable
@@ -75,7 +73,7 @@ namespace DIMS_Core.BusinessLayer.Services
                 return;
             }
 
-            _unitOfWork.Dispose();
+            _repository.Dispose();
 
             _disposed = true;
         }

@@ -12,8 +12,8 @@ namespace DIMS_Core.BusinessLayer.Services
 {
     public class DirectionService : Service<DirectionModel, Direction, IRepository<Direction>>, IDirectionService
     {
-        public DirectionService(IRepository<Direction> repository, IUnitOfWork unitOfWork, IMapper mapper) 
-            : base(repository, unitOfWork, mapper)
+        public DirectionService(IRepository<Direction> repository, IMapper mapper) 
+            : base(repository, mapper)
         {
         }
 

@@ -1,9 +1,11 @@
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace DIMS_Core.DataAccessLayer.Interfaces
 {
-    public interface IRepository<TEntity> where TEntity : class
+    public interface IRepository<TEntity> : IDisposable
+        where TEntity : class
     {
         IQueryable<TEntity> GetAll();
 
@@ -14,5 +16,7 @@ namespace DIMS_Core.DataAccessLayer.Interfaces
         TEntity Update(TEntity entity);
 
         Task Delete(int id);
+
+        Task SaveChanges();
     }
 }

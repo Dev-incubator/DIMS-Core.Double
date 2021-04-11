@@ -56,11 +56,9 @@ namespace DIMS_Core.BusinessLayer.Services
                 return;
             }
 
-            if (_repository is Repository<TEntity> abstractRepository)
-            {
-                abstractRepository.Dispose();
-                _disposed = true;
-            }
+            _repository.Dispose();
+
+            _disposed = true;
         }
         #endregion
     }

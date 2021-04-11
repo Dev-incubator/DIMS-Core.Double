@@ -5,18 +5,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DIMS_Core.DataAccessLayer.Repositories
 {
-    public class VUserTaskRepository : IReadOnlyRepository<VUserTask>
-
+    public class VUserTaskRepository : ReadOnlyRepository<VUserTask>
     {
-        private readonly DIMSCoreContext _context;
-        public VUserTaskRepository(DIMSCoreContext context) 
+        public VUserTaskRepository(DIMSCoreContext context) : base(context)
         {
-            _context = context;
-        }
-
-        public IQueryable<VUserTask> GetAll()
-        {
-            return _context.VUserTasks.AsNoTracking();
         }
     }
 }

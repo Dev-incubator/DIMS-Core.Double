@@ -9,9 +9,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DIMS_Core.DataAccessLayer.Repositories
 {
-    public class ReadOnlyRepository<TEntity> : IReadOnlyRepository<TEntity> where TEntity : class
+    public class ReadOnlyRepository<TEntity> : IReadOnlyRepository<TEntity> 
+        where TEntity : class
     {
         protected readonly DIMSCoreContext _context;
+
         protected ReadOnlyRepository(DIMSCoreContext context)
         {
             _context = context;
@@ -21,5 +23,35 @@ namespace DIMS_Core.DataAccessLayer.Repositories
         {
             return _context.Set<TEntity>().AsNoTracking();
         }
+
+        #region Disposable
+
+        private bool _disposed;
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (_disposed)
+            {
+                return;
+            }
+
+            _context.Dispose();
+
+            _disposed = true;
+        }
+
+        ~ReadOnlyRepository()
+        {
+            Dispose(false);
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        #endregion Disposable
     }
 }
+

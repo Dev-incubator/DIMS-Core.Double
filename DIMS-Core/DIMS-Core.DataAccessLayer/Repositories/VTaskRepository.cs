@@ -5,18 +5,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DIMS_Core.DataAccessLayer.Repositories
 {
-    public class VTaskRepository : IReadOnlyRepository<VTask>
+    public class VTaskRepository : ReadOnlyRepository<VTask>
     {
-        private readonly DIMSCoreContext _context;
-        
-        public VTaskRepository(DIMSCoreContext context)
+        public VTaskRepository(DIMSCoreContext context) : base(context)
         {
-            _context = context;
-        }
 
-        public IQueryable<VTask> GetAll()
-        {
-            return _context.VTasks.AsNoTracking();
         }
     }
 }

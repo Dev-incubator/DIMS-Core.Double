@@ -9,13 +9,8 @@ using DIMS_Core.Common.Exceptions;
 
 namespace DIMS_Core.DataAccessLayer.Repositories
 {
-    /// <summary>
-    /// TODO: Task #1
-    /// Implement all methods
-    /// Generic Repository
-    /// </summary>
     /// <typeparam name="TEntity"></typeparam>
-    public abstract class Repository<TEntity> : IDisposable, IRepository<TEntity>
+    public abstract class Repository<TEntity> : IRepository<TEntity>
         where TEntity : class
     {
         private readonly DbContext _context;
@@ -64,6 +59,11 @@ namespace DIMS_Core.DataAccessLayer.Repositories
         protected DatabaseFacade GetDatabaseFacade()
         {
             return _context.Database;
+        }
+
+        public Task SaveChanges()
+        {
+            return _context.SaveChangesAsync();
         }
 
         #region Disposable

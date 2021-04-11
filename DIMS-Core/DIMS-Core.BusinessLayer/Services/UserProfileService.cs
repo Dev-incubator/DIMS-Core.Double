@@ -10,8 +10,8 @@ namespace DIMS_Core.BusinessLayer.Services
 {
     public class UserProfileService : Service<UserProfileModel, UserProfile, IRepository<UserProfile>>, IUserProfileService
     {
-        public UserProfileService(IRepository<UserProfile> repository, IUnitOfWork unitOfWork, IMapper mapper)
-            : base(repository, unitOfWork, mapper)
+        public UserProfileService(IRepository<UserProfile> repository, IMapper mapper)
+            : base(repository, mapper)
         {
         }
 

@@ -1,9 +1,11 @@
+using System;
 using System.Linq;
 
 namespace DIMS_Core.DataAccessLayer.Interfaces
 {
-    public interface IReadOnlyRepository<T> where T : class 
+    public interface IReadOnlyRepository<TEntity> : IDisposable 
+        where TEntity : class 
     {
-        IQueryable<T> GetAll();
+        IQueryable<TEntity> GetAll();
     }
 }
